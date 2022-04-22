@@ -1,0 +1,16 @@
+{   "root": true,
+    "plugins": ["jest-react","jest-dom","testing-library"],
+
+    "extends": ["react-app",
+                "react-app/jest",
+                "plugin:jest-react/recommended",
+                "plugin:testing-library/react"
+               
+               
+
+              
+            ]
+            
+            // "plugins": [  "testing-library", "jest"]
+           
+}

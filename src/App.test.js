@@ -1,6 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import App from './App';
-
 test('button has correct initial color', () => {
    render(<App></App>);
  const colorBtn=  screen.getByRole('button',{name:'Change to blue'})
@@ -19,7 +18,7 @@ test('button turns blue when clicked', () => {
   
    //expect the button text to be 'Change to Red'
     
-   expect(colorBtn.textContent).toBe('Change to red');
+   expect(colorBtn.textContent).not.toBeEnabled();
 
 });
  
