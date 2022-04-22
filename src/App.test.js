@@ -6,7 +6,7 @@ test('button has correct initial color', () => {
  const colorBtn=  screen.getByRole('button',{name:'Change to blue'})
    
    //expect the background color to be red
-   expect(colorBtn).toHaveStyle({backgroundColor:'red'})
+   expect(colorBtn).toHaveStyle({backgroundColor:'MediumVioletRed'})
 });
 
 test('button turns blue when clicked', () => {
@@ -15,7 +15,7 @@ test('button turns blue when clicked', () => {
   //click button
    fireEvent.click(colorBtn);
  //expect to have color blue
-   expect(colorBtn).toHaveStyle({backgroundColor:'blue'});
+   expect(colorBtn).toHaveStyle({backgroundColor:'MidnightBlue'});
   
    //expect the button text to be 'Change to Red'
     
@@ -50,7 +50,7 @@ test('button disabled',()=>{
 
   fireEvent.click(checkbox);
   expect(checkbox).not.toBeChecked();
-  expect(button).not.toBeDisabled();
+  expect(button).toBeDisabled();
 
 
 })
@@ -62,7 +62,7 @@ test('gray button if disabled, enabled back to red',()=>{
   fireEvent.click(checkbox);
   expect(button).toHaveStyle({backgroundColor:'gray'})
   fireEvent.click(checkbox);
-  expect(button).toHaveStyle({backgroundColor:'red'})
+  expect(button).toHaveStyle({backgroundColor:'MediumVioletRed'})
   
 })
  
@@ -75,7 +75,7 @@ test('click button turn blue ,gray button if disabled, enabled back to blue',()=
   fireEvent.click(checkbox);
   expect(button).toHaveStyle({backgroundColor:'gray'})
   fireEvent.click(checkbox);
-  expect(button).toHaveStyle({backgroundColor:'blue'})
+  expect(button).toHaveStyle({backgroundColor:'MidnightBlue'})
   
 })
  

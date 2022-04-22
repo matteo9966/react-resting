@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { useState } from "react";
 export function replaceCamelWithSpaces(colorName){
@@ -8,9 +7,9 @@ export function replaceCamelWithSpaces(colorName){
 }
 
 function App() {
-  const [color, setColor] = useState("red");
+  const [color, setColor] = useState("MediumVioletRed");
   const [checked,setIsChecked] = useState(false);
-  const title = color === "red" ? "Change to blue" : "Change to red";
+  const title = color === "MediumVioletRed" ? "Change to blue" : "Change to red";
   const buttonColor = checked?'gray':color;
   return (
     <div className="App">
@@ -19,7 +18,7 @@ function App() {
         disabled={checked}
         onClick={() => {
           setColor((color) => {
-           return color === "red" ? "blue" : "red";
+           return color === "MediumVioletRed" ? "MidnightBlue" : "MediumVioletRed";
           });
         }}
       >
