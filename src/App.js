@@ -1,9 +1,9 @@
 import "./App.css";
-
+import {SummaryForm} from './pages/summary/SummaryForm'
 function App() {
   return (
     <div className="App" style={{ backgroundColor: "teal", color: "ivory" }}>
-      <button style={{ backgroundColor: "red" }}>Change to blue</button>
+     <SummaryForm></SummaryForm>
     </div>
   );
 }
