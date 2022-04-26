@@ -14,3 +14,15 @@ test('display image for each scoop options from server',async ()=>{
 
 
 })
+
+
+test('display topping images from server',async ()=>{
+    render(<Options optionType={'toppings'}></Options>);
+
+    const toppingImages = await screen.findAllByRole('img',{name:/topping$/i});
+    expect(toppingImages).toHaveLength(3);
+    
+    const toppingNames = toppingImages.map(topping=>topping.alt);
+    expect(toppingNames).toEqual(["Cherries topping","MandMs topping","Hot Fudge topping"]);
+
+})

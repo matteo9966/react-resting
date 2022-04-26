@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { ScoopOption } from "./ScoopOption";
+import { ToppingOption } from "./ToppingOption";
 import { Row } from "react-bootstrap";
 export const Options = ({ optionType }) => {
   const [items, setItems] = useState([]);
@@ -13,7 +14,7 @@ export const Options = ({ optionType }) => {
       .catch((err) => console.log(err));
   }, [optionType]);
 
-  const ItemComponent = optionType === "scoops" ? ScoopOption : null; // null should be replaced by topping options
+  const ItemComponent = optionType === "scoops" ? ScoopOption : ToppingOption; // null should be replaced by topping options
 
   const OptionItems = items.map((item) => (
     <ItemComponent
