@@ -1,8 +1,8 @@
-import { render,screen} from '@testing-library/react';
+import { render, screen } from "../../../test-utils/testing-library-utils" //importo la mia versione di render
 import { Options } from '../Options';
-
+import {OrderDetailsProvider} from '../../../context/OrderDetails';
 test('display image for each scoop options from server',async ()=>{
-    render(<Options optionType={'scoops'}></Options>)
+    render(<Options optionType={'scoops'}></Options>,{wrapper:OrderDetailsProvider});
 
     // find the images
     const scoopImages =  await screen.findAllByRole('img',{name:/scoop$/i})
