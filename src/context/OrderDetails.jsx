@@ -62,7 +62,7 @@ export function OrderDetailsProvider(props) {
     const grandtotal = scoopsSubtotal + toppingSubtotal;
     setTotals({
       scoops: formatCurrency(scoopsSubtotal),
-      toppingSubtotal: formatCurrency(toppingSubtotal),
+      toppings: formatCurrency(toppingSubtotal),
       grandtotal: formatCurrency(grandtotal),
     });
   }, [optionCount]);

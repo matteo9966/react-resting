@@ -38,7 +38,10 @@ export const Options = ({ optionType }) => {
       updateItemCount={(itemName,newItemCount)=>{updateItemCount(itemName,newItemCount,optionType)}}
     ></ItemComponent>
   ));
-
+  
+  console.log({
+    uppercaseOption,orderDetailsTOTAL:orderDetails.totals[optionType]
+  })
   return (<>
     <h2>{uppercaseOption}</h2>
     <h3>{pricePerItem[optionType]}$ each</h3>
