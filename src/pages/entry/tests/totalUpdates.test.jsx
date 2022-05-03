@@ -59,10 +59,35 @@ describe('Grand Total',()=>{
     expect(grandTotal).toHaveTextContent('0.00');
 
   })
-  test('add a scoop updates grand total',()=>{
-    throw new Error()
+  test('add a scoop updates grand total',async ()=>{
+    render(<App></App>)
+    const grandTotal = await screen.findByRole('heading',{name:/^Grand total/i});
+    const vanillaInput  = await screen.findByRole('spinbutton',{name:'Vanilla'})
+    await userEvent.clear(vanillaInput);
+    await userEvent.type(vanillaInput,"1");
+    expect(grandTotal).toHaveTextContent('2.00');
+
   })
-  test('add a topping updates grad total',()=>{})
-  test('grand total updates if you remove a scoop',()=>{})
+  test('add a topping updates grad total', async ()=>{
+    render(<App></App>)
+    const grandTotal = await screen.findByRole('heading',{name:/^Grand total/i});
+    const fudgeCheckbox = await screen.findByLabelText('Hot fudge',{exact:false});
+    await userEvent.click(fudgeCheckbox);
+    expect(grandTotal).toHaveTextContent('1.50')
+  })
+  test('grand total updates if you remove a scoop',async ()=>{
+    render(<App></App>);
+    const grandTotal = await screen.findByRole('heading',{name:/^Grand total/i});
+    const vanillaInput  = await screen.findByRole('spinbutton',{name:'Vanilla'})
+    const fudgeCheckbox = await screen.findByLabelText('Hot fudge',{exact:false});
+    await userEvent.click(fudgeCheckbox);
+    await userEvent.clear(vanillaInput);
+    await userEvent.type(vanillaInput,"2");
+    await userEvent.clear(vanillaInput);
+    await userEvent.type(vanillaInput,"1");
+    expect(grandTotal).toHaveTextContent('3.50')
+    
+
+  })
 
 })
