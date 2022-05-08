@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Popover from "react-bootstrap/Popover";
 import { OverlayTrigger } from "react-bootstrap";
+import { useOrderDetails } from "../../context/OrderDetails";
 const popover = (
   <Popover id="popover-terms-and-conditions">
     <Popover.Body>no icecream will actually be delivered</Popover.Body>
@@ -23,8 +24,27 @@ const CheckBoxLabel = () => {
     </p>
   );
 };
-export const SummaryForm = () => {
+export const SummaryForm = ({setOrderCode}) => {
+
+ const [,,resetCount] = useOrderDetails();
+
   const [check, setChecked] = useState(false);
+
+  const onSubmitOrder = async ()=>{
+    
+    try {
+       const response =  await fetch('http://localhost:3030/order',{method:'POST',body:{'order':'IcecReam'}})
+       const data = await response.json();
+       const code = data.orderNumber;
+       setOrderCode(code);
+      console.log(code);
+       
+       resetCount();
+     } catch (error) {
+       //error
+     }
+  }
+
   return (
     <Form>
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
@@ -38,8 +58,8 @@ export const SummaryForm = () => {
           }}
         />
       </Form.Group>
-
-      <Button variant="primary" type="submit" disabled={!check}>
+       
+      <Button variant="primary" type="submit" onClick={async (e)=>{e.preventDefault(); await onSubmitOrder()}} disabled={!check}>
         Confirm order
       </Button>
     </Form>
