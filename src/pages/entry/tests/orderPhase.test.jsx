@@ -2,21 +2,40 @@ import {render,screen} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from '../../../App';
 
-test('order phases for happy path',()=>{
+test('order phases for happy path',async ()=>{
     //render app
-
+    render(<App></App>);
+    //ora c'è app sullo schermo.
+    const user = userEvent.setup();
+    const vanillaInput = await screen.findByRole('spinbutton',{name:'Vanilla'})
+   
+    
     //add icecream scoops and toppings
+    
+    
+    await user.clear(vanillaInput);
+    await user.type(vanillaInput,'1')
+
 
     //find and click order button
 
+    const orderButton = screen.getByRole('button',{name:'Ordina il tuo Sundae'});
+    await user.click(orderButton);
+
+
     //check summary information based on order
-
+    
+    const summaryButton = await screen.findByRole('button',{name:'Confirm order'});
+    const checkbox = await screen.findByRole('checkbox',{name:/terms and conditions/i})
+    await user.click(checkbox)
+    await user.click(summaryButton);
     //accept terms and conditions and click button to confirm order
-
+    await screen.findByText(/Your order number is: \d+/i);
+    
     //confirm that i have a order number on confirmation page
-
+    
     // click new order button on confirmation page
-
+  
     // check that scoops and toppings subtotal have been reset
 
     // do we need to await enithing to avoid test errors?
