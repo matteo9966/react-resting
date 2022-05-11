@@ -39,10 +39,22 @@ test('order phases for happy path',async ()=>{
     // check that scoops and toppings subtotal have been reset
 
     // do we need to await enithing to avoid test errors?
+    //note: se faccio il submit dell'ordine mi ritrovo che l'ordine va a finire sul server
+    //il server genera un numero casuale e restituisce un numero
+    //ler richieste al server vengono fatte con mock service worker
 
 
 })
 
-//note: se faccio il submit dell'ordine mi ritrovo che l'ordine va a finire sul server
-//il server genera un numero casuale e restituisce un numero
-//ler richieste al server vengono fatte con mock service worker
+test('order button is disabled if no scoops are added',async ()=>{
+    render(<App></App>);
+    const user = userEvent.setup();
+    const vanillaInput = await screen.findByRole('spinbutton',{name:'Vanilla'});
+    const orderButton = screen.getByRole('button',{name:'Ordina il tuo Sundae'});
+    expect(orderButton).toBeDisabled();
+    await user.clear(vanillaInput);
+    await user.type(vanillaInput,'1');
+    expect(orderButton).not.toBeDisabled();
+    
+})
+
