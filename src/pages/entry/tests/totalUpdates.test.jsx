@@ -17,10 +17,10 @@ test('update scoop subtotal when scoops change',async ()=>{
    expect(scoopsSubtotal).toHaveTextContent(/^.*\$0.00$/ig)
   //update vanilla scoops to 1 and check subtotal
    const vanillaInput  = await screen.findByRole('spinbutton',{name:'Vanilla'})
-   console.log({value:vanillaInput.value});
+  //  console.log({value:vanillaInput.value});
    await userEvent.clear(vanillaInput);
    await userEvent.type(vanillaInput,"1");
-   console.log({value:vanillaInput.value});
+  //  console.log({value:vanillaInput.value});
    expect(scoopsSubtotal).toHaveTextContent('2.00')
   //update chocolate scoops to 2 andh check subtotal
    

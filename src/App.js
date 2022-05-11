@@ -14,7 +14,7 @@ function App() {
   useEffect(()=>{
     
     if(orderCode){
-      console.log('ordine completato!')
+      // console.log('ordine completato!')
       setOrderStatus(orderStates.complete);
 
     }
@@ -23,7 +23,7 @@ function App() {
 
 
   useEffect(()=>{
-    console.log({orderStatus})
+    // console.log({orderStatus})
   },[orderStatus])
 
   return (

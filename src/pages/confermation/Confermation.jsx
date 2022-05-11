@@ -6,7 +6,7 @@ import Stack from "react-bootstrap/Stack";
 //questa pagina viene mostrata solo quando ho ricevuto il codice.
 
 export const Confermation = ({setNewOrder,orderCode}) => {
-    console.log('confermation code',orderCode);
+    // console.log('confermation code',orderCode);
   return (
     <div className={styles["confirmation__body"]}>
       <Stack gap={2}>

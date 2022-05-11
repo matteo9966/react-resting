@@ -5,6 +5,7 @@ import Form from "react-bootstrap/Form";
 export const ScoopOption = ({ name, imagePath, updateItemCount }) => {
 
   const handleChange = (e)=>{
+       if(e.target.value<0)return
        updateItemCount(name,e.target.value);
   }
   return (
@@ -26,7 +27,7 @@ export const ScoopOption = ({ name, imagePath, updateItemCount }) => {
           {name}
         </Form.Label>
         <Col xs="5" style={{ textAlign: "left" }}>
-          <Form.Control type="number" defaultValue={0} onChange={handleChange}></Form.Control>
+          <Form.Control type="number" defaultValue={0} min={0} max={10} onChange={handleChange}></Form.Control>
         </Col>
       </Form.Group>
     </Col>
